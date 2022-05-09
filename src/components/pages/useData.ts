@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { InitPost, useDataType } from "./interfaces";
 
-const useData = () : useDataType => {
+const useData = (): useDataType => {
     const [tempPageStart, setTempPageStart] = useState<number>(1);
     const [tempPage, setTempPage] = useState<number>(tempPageStart);
     const [paginationPage, setPaginationPage] = useState<number>(1);
@@ -13,7 +13,7 @@ const useData = () : useDataType => {
     const [postInterval, setPostInterval] = useState<any>();
     const rowsPerPage: number = 20;
 
-    const getPosts = async () => {
+    const getPosts = useCallback(async () => {
 
         try {
             setIsLoading(true);
@@ -27,7 +27,7 @@ const useData = () : useDataType => {
             setIsLoading(false);
             console.log(error);
         }
-    }
+    }, [tempPage])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -41,7 +41,7 @@ const useData = () : useDataType => {
     useEffect(() => {
 
         getPosts()
-
+        console.log('pagination')
     }, [tempPage])
 
     return {

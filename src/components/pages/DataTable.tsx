@@ -12,9 +12,9 @@ const columns: readonly Column[] = [
 const DataTable: React.FC<TableDataInit> = ({ posts, paginationPage, rowsPerPage, getDetails, isLoading }) => {
 
     return (
-        <Table stickyHeader aria-label="sticky table" size='small'>
+        <Table stickyHeader aria-label="sticky table" size='small' data-testid="dataTable">
             <TableHead>
-                <TableRow>
+                <TableRow data-testid="dataRow">
                     {
                         columns?.map(column =>
                             <TableCell
@@ -26,6 +26,8 @@ const DataTable: React.FC<TableDataInit> = ({ posts, paginationPage, rowsPerPage
                         )
                     }
                 </TableRow>
+            </TableHead>
+            <TableBody>
                 <TableRow >
                     <TableCell ></TableCell>
                     <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -34,9 +36,6 @@ const DataTable: React.FC<TableDataInit> = ({ posts, paginationPage, rowsPerPage
                     <TableCell></TableCell>
                     <TableCell></TableCell>
                 </TableRow>
-            </TableHead>
-            <TableBody>
-
                 {
                     posts.slice((paginationPage - 1) * rowsPerPage, (paginationPage - 1) * rowsPerPage + rowsPerPage).map((post, index) => {
                         return (

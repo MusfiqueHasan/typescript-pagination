@@ -19,15 +19,15 @@ it('Render details component', () => {
 });
 
 
-it('Check the data is rendering in the P tag?', () => {
+it('Check the data is rendering in the Grid tag?', () => {
 
     const history = createMemoryHistory();
-    history.push("/details", "Hello");
+    history.push("/details", "This is Musfique Hasan");
     render(
         <Router location={history.location} navigator={history}>
             <Details/>
         </Router>
     );
-    const details = screen.getByText("Hello");
+    const details = screen.getByText("This is Musfique Hasan");
     expect(details).toBeInTheDocument();
 });

@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -10,7 +11,7 @@ const Details = lazy(() => import('./components/pages/Details'));
 const App: React.FC = () => {
   return (
     <div className="App" data-testid="app">
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<CircularProgress />}>
         <BrowserRouter>
           <DataProvider>
             <Routes>
