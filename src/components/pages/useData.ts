@@ -19,8 +19,9 @@ const useData = (): useDataType => {
             setIsLoading(true);
             const res = await fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=story&page=${tempPage}`);
             const data = await res.json();
-            setPosts([...posts, ...data.hits]);
-            setTotalPostCount([...posts, ...data.hits].length);
+            const postData = [...posts, ...data.hits]
+            setPosts(postData);
+            setTotalPostCount(postData.length);
             setIsLoading(false);
 
         } catch (error) {
@@ -42,7 +43,7 @@ const useData = (): useDataType => {
 
         getPosts()
         console.log('pagination')
-    }, [tempPage])
+    }, [getPosts])
 
     return {
         tempPage,
