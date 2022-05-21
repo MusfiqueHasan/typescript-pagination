@@ -36,7 +36,7 @@ const DataTable: React.FC<TableDataInit> = ({ posts, paginationPage, rowsPerPage
                             <TableRow
                                 sx={{ cursor: 'pointer' }}
                                 onClick={() => getDetails(post)}
-                                key={post?.created_at_i + index}
+                                key={index}
                                 hover
                             >
                                 <TableCell>{post?.title}</TableCell>
