@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { InitPost, useDataType } from "./interfaces";
 
 const useData = (): useDataType => {
-    const [tempPageStart, setTempPageStart] = useState<number>(1);
+    const [tempPageStart, setTempPageStart] = useState<number>(0);
     const [tempPage, setTempPage] = useState<number>(tempPageStart);
     const [paginationPage, setPaginationPage] = useState<number>(1);
     const [totalPostCount, setTotalPostCount] = useState<number>(0);

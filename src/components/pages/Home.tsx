@@ -1,7 +1,5 @@
 import {
     Box,
-    CircularProgress,
-    Container,
     Grid,
     Pagination,
     Paper,
@@ -27,10 +25,10 @@ const Home: React.FC = () => {
     const handleChangePage = async (event: unknown, newPage: number) => {
         setPaginationPage(newPage);
         setTempPageStart(newPage)
-        // console.log(newPage);
 
     }
 
+    // console.log((totalPostCount / rowsPerPage) - 1);
     return (
         <div >
             <Grid container spacing={2}>
@@ -41,13 +39,11 @@ const Home: React.FC = () => {
                                 <DataTable posts={posts} paginationPage={paginationPage} rowsPerPage={rowsPerPage} getDetails={getDetails} isLoading={isLoading}></DataTable>
                             </TableContainer>
                             <Box sx={{ py: 2, display: 'flex', justifyContent: 'center' }}>
-
                                 <Pagination color="primary" data-testid="pagination"
                                     count={totalPostCount / rowsPerPage}
                                     page={tempPageStart ? tempPageStart : paginationPage}
                                     onChange={handleChangePage}
                                 />
-
                             </Box>
                         </Paper>
 
