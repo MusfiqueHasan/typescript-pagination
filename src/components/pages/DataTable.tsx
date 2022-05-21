@@ -16,13 +16,16 @@ const DataTable: React.FC<TableDataInit> = ({ posts, paginationPage, rowsPerPage
             <TableHead>
                 <TableRow data-testid="dataRow">
                     {
-                        columns?.map(column =>
-                            <TableCell
-                                key={column?.id}
-                                align={column?.align}
-                                style={{ background: '#2196f3', color: 'white' }}>
-                                {column?.label}
-                            </TableCell>
+                        columns?.map((column) => {
+                            return (
+                                <TableCell
+                                    key={column?.id}
+                                    align={column?.align}
+                                    style={{ background: '#2196f3', color: 'white' }}>
+                                    {column?.label}
+                                </TableCell>
+                            )
+                        }
                         )
                     }
                 </TableRow>
@@ -39,27 +42,25 @@ const DataTable: React.FC<TableDataInit> = ({ posts, paginationPage, rowsPerPage
                 {
                     posts.slice((paginationPage - 1) * rowsPerPage, (paginationPage - 1) * rowsPerPage + rowsPerPage).map((post, index) => {
                         return (
-                            <>
-                                <TableRow
-                                    sx={{ cursor: 'pointer' }}
-                                    onClick={() => {
-                                        getDetails(post)
-                                    }}
-                                    key={index}
-                                    hover
-                                >
+                            <TableRow
+                                sx={{ cursor: 'pointer' }}
+                                onClick={() => {
+                                    getDetails(post)
+                                }}
+                                key={post?.created_at_i}
+                                hover
+                            >
 
-                                    <TableCell>{post?.title}</TableCell>
-                                    <TableCell>{post?.url}</TableCell>
-                                    <TableCell>{post?.created_at}</TableCell>
-                                    <TableCell>{post?.author}</TableCell>
-                                </TableRow>
-                            </>
+                                <TableCell>{post?.title}</TableCell>
+                                <TableCell>{post?.url}</TableCell>
+                                <TableCell>{post?.created_at}</TableCell>
+                                <TableCell>{post?.author}</TableCell>
+                            </TableRow>
                         )
                     })
                 }
             </TableBody>
-        </Table>
+        </Table >
     );
 };
 

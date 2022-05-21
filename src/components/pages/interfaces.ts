@@ -2,7 +2,8 @@ export interface InitPost {
     title: string,
     url: string,
     created_at: string,
-    author: string
+    author: string,
+    created_at_i: number,
 }
 
 

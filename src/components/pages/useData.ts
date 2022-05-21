@@ -14,7 +14,6 @@ const useData = (): useDataType => {
     const rowsPerPage: number = 20;
 
     const getPosts = useCallback(async () => {
-
         try {
             setIsLoading(true);
             const res = await fetch(`https://hn.algolia.com/api/v1/search_by_date?tags=story&page=${tempPage}`);
@@ -23,7 +22,6 @@ const useData = (): useDataType => {
             setPosts(postData);
             setTotalPostCount(postData.length);
             setIsLoading(false);
-
         } catch (error) {
             setIsLoading(false);
             console.log(error);
@@ -39,10 +37,10 @@ const useData = (): useDataType => {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
 
+    useEffect(() => {
         getPosts()
-        console.log('pagination')
+        // console.log('pagination')
     }, [getPosts])
 
     return {
